@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+{% block navbar %}
+{{ nav.top.render() }}
+{% endblock %}
+<head>
+     <title>设备资产信息</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../static/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/assets/bootstrap-table/src/bootstrap-table.css">
+    <link rel="stylesheet" href="../static/assets/examples.css">
+    <script src="../static/assets/jquery.min.js"></script>
+    <script src="../static/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../static/assets/bootstrap-table/src/bootstrap-table.js"></script>
+    <script src="../static/assets/bootstrap-table/src/extensions/export/bootstrap-table-export.js"></script>
+    <script src="../static/assets/bootstrap-table/src/extensions/toolbar/bootstrap-table-toolbar.js"></script>
+    <script src="../static/js/export-excel.js"></script>
+    <script src="../static/js/ga.js"></script>
+</head>
+<body>
+<div class="container">
+        <div id="toolbar">
+            <select class="form-control">
+                <option value="">Export Basic</option>
+                <option value="all">Export All</option>
+                <option value="selected">Export Selected</option>
+            </select>
+        </div>
+<div class="container">
+    <h2>设备资产信息</h2>
+    <table id="table"
+           data-toggle="table"
+           data-pagination="true"
+           data-show-columns="true"
+           data-click-to-select="true"
+           data-show-export="true"
+           data-search="true"
+           data-advanced-search="true"
+           data-id-table="advancedTable"
+           data-toolbar="#toolbar"
+           data-url="../static/json/data.json">
+        <thead>
+        <tr>
+            <th data-field="state" data-checkbox="true"></th>
+            <th data-field="id" data-sortable="true">ID</th>
+            <th data-field="name" data-sortable="true">Item Name</th>
+            <th data-field="price" data-sortable="true">Item Price</th>
+        </tr>
+        </thead>
+    </table>
+    </div>
+</body>
+    <script>
+    var $table = $('#table');
+    $(function () {
+        $('#toolbar').find('select').change(function () {
+            $table.bootstrapTable('destroy').bootstrapTable({
+                exportDataType: $(this).val()
+            });
+        });
+    })
+</script>
+</html>

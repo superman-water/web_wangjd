@@ -1,0 +1,19 @@
+{% extends 'bootstrap/base.html' %}
+{% block html_attribs %} lang="zh-CN" {% endblock %}
+{% block meta %}
+{{ super() }}
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+{% endblock %}
+{% block html%}
+{% block head %}
+<link rel="stylesheet" href="../static/assets/bootstrap/css/bootstrap.min.css">
+{% endblock %}
+{% block navbar %}
+{{ nav.top.render() }}
+{% endblock %}
+{% block footer %}
+<div class="mastfoot" >
+<div class="inner"><a href='http://www.baidu.com/'>ICP备16013637号</a></div></div>
+{% endblock %}
+{% endblock %}
